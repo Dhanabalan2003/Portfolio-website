@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dhanabalan | UI/UX Designer</title>
+
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Space Grotesk',sans-serif;
+}
+
+body{
+background:#050816;
+color:#ffffff;
+overflow-x:hidden;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body::before{
+content:'';
+position:fixed;
+width:500px;
+height:500px;
+background:#7c3aed;
+filter:blur(140px);
+top:-180px;
+right:-120px;
+opacity:0.35;
+z-index:-2;
+}
+
+body::after{
+content:'';
+position:fixed;
+width:400px;
+height:400px;
+background:#06b6d4;
+filter:blur(140px);
+bottom:-160px;
+left:-100px;
+opacity:0.25;
+z-index:-2;
+}
+
+header{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+width:88%;
+padding:18px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:22px;
+z-index:1000;
+}
+
+.logo{
+font-size:26px;
+font-weight:700;
+background:linear-gradient(90deg,#60a5fa,#c084fc,#22d3ee);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+nav a{
+text-decoration:none;
+color:#dbeafe;
+margin-left:24px;
+font-weight:500;
+position:relative;
+}
+
+nav a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-6px;
+width:0;
+height:2px;
+background:#60a5fa;
+transition:0.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+.menu-btn{
+display:none;
+font-size:30px;
+cursor:pointer;
+}
+
+.hero{
+min-height:100vh;
+display:grid;
+grid-template-columns:1.1fr 0.9fr;
+align-items:center;
+padding:140px 8% 80px;
+gap:60px;
+position:relative;
+}
+
+.small-tag{
+display:inline-block;
+padding:10px 18px;
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:40px;
+font-size:14px;
+margin-bottom:26px;
+color:#93c5fd;
+}
+
+.hero h1{
+font-size:78px;
+line-height:0.95;
+margin-bottom:24px;
+font-weight:700;
+}
+
+.hero h1 span{
+background:linear-gradient(90deg,#60a5fa,#c084fc,#22d3ee);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+font-size:18px;
+line-height:1.9;
+color:#cbd5e1;
+max-width:650px;
+margin-bottom:34px;
+}
+
+.btn-group{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:16px 28px;
+border-radius:16px;
+text-decoration:none;
+font-weight:600;
+transition:0.35s;
+}
+
+.primary-btn{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:white;
+box-shadow:0 10px 40px rgba(124,58,237,0.35);
+}
+
+.primary-btn:hover{
+transform:translateY(-6px);
+}
+
+.secondary-btn{
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.1);
+color:white;
+backdrop-filter:blur(12px);
+}
+
+.secondary-btn:hover{
+transform:translateY(-6px);
+background:rgba(255,255,255,0.1);
+}
+
+.hero-card{
+position:relative;
+padding:34px;
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(24px);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:34px;
+overflow:hidden;
+}
+
+.hero-card::before{
+content:'';
+position:absolute;
+width:160px;
+height:160px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+right:-60px;
+top:-60px;
+border-radius:50%;
+opacity:0.5;
+}
+
+.profile-circle{
+width:140px;
+height:140px;
+border-radius:30px;
+background:linear-gradient(135deg,#2563eb,#7c3aed,#ec4899);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:56px;
+font-weight:700;
+margin-bottom:24px;
+box-shadow:0 10px 30px rgba(124,58,237,0.35);
+}
+
+.hero-card h2{
+font-size:34px;
+margin-bottom:8px;
+}
+
+.hero-card p{
+color:#cbd5e1;
+line-height:1.8;
+}
+
+.contact-info{
+display:grid;
+gap:14px;
+margin-top:28px;
+}
+
+.info-item{
+padding:14px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:18px;
+}
+
+.info-item strong{
+display:block;
+margin-bottom:6px;
+}
+
+.info-item a{
+color:#93c5fd;
+text-decoration:none;
+word-break:break-word;
+}
+
+section{
+padding:110px 8%;
+position:relative;
+}
+
+.section-title{
+font-size:56px;
+text-align:center;
+margin-bottom:14px;
+font-weight:700;
+}
+
+.section-subtitle{
+text-align:center;
+max-width:700px;
+margin:auto auto 60px;
+line-height:1.8;
+color:#94a3b8;
+}
+
+.about-text{
+max-width:900px;
+margin:auto;
+text-align:center;
+line-height:2;
+color:#cbd5e1;
+font-size:18px;
+}
+
+.grid,.card-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:28px;
+}
+
+.card,.flat-card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(16px);
+border:1px solid rgba(255,255,255,0.08);
+padding:32px;
+border-radius:30px;
+transition:0.35s;
+position:relative;
+overflow:hidden;
+}
+
+.card::before,.flat-card::before{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(135deg,rgba(96,165,250,0.12),rgba(192,132,252,0.05));
+opacity:0;
+transition:0.35s;
+}
+
+.card:hover,.flat-card:hover{
+transform:translateY(-12px) scale(1.02);
+}
+
+.card:hover::before,.flat-card:hover::before{
+opacity:1;
+}
+
+.icon-box,.icon{
+width:74px;
+height:74px;
+border-radius:24px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+margin-bottom:22px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+box-shadow:0 10px 30px rgba(124,58,237,0.3);
+}
+
+.card h3,.flat-card h3{
+font-size:28px;
+margin-bottom:14px;
+}
+
+.card p,.flat-card p{
+line-height:1.9;
+color:#cbd5e1;
+}
+
+.project-link{
+display:inline-block;
+margin-top:20px;
+color:#93c5fd;
+text-decoration:none;
+font-weight:700;
+}
+
+.contact-box{
+max-width:760px;
+margin:auto;
+padding:40px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:34px;
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+input,textarea{
+padding:18px;
+border-radius:18px;
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.08);
+color:white;
+font-size:16px;
+outline:none;
+}
+
+textarea{
+height:150px;
+resize:none;
+}
+
+.submit-btn{
+padding:18px;
+border-radius:18px;
+border:none;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:white;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+}
+
+footer{
+padding:40px;
+text-align:center;
+color:#94a3b8;
+}
+
+@media(max-width:1000px){
+.hero{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.hero p{
+margin:auto auto 34px;
+}
+
+.btn-group{
+justify-content:center;
+}
+
+.grid,.card-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:768px){
+header{
+width:92%;
+padding:16px 20px;
+}
+
+nav{
+display:none;
+position:absolute;
+top:80px;
+left:0;
+width:100%;
+padding:20px;
+background:#0f172a;
+border-radius:20px;
+}
+
+nav.active{
+display:block;
+}
+
+nav a{
+display:block;
+margin:16px 0;
+}
+
+.menu-btn{
+display:block;
+}
+
+.hero{
+padding:140px 6% 70px;
+}
+
+.hero h1{
+font-size:52px;
+}
+
+.section-title{
+font-size:42px;
+}
+
+.grid,.card-grid{
+grid-template-columns:1fr;
+}
+
+section{
+padding:90px 6%;
+}
+}
+
+@media(max-width:480px){
+.hero h1{
+font-size:40px;
+}
+
+.btn{
+width:100%;
+text-align:center;
+}
+
+.section-title{
+font-size:34px;
+}
+}
+</style>
+</head>
+
+<body>
+<div style="position:fixed;width:320px;height:320px;background:#c4b5fd;border-radius:50%;top:-100px;left:-100px;filter:blur(80px);opacity:0.45;z-index:-1;"></div>
+<div style="position:fixed;width:280px;height:280px;background:#93c5fd;border-radius:50%;bottom:-80px;right:-80px;filter:blur(80px);opacity:0.4;z-index:-1;"></div>
+  <header>
+    <div class="logo">Dhanabalan</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <nav id="navbar">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <span class="small-tag">Creative UI/UX Designer</span>
+      <h1>Hi, I am <span>Dhanabalan</span></h1>
+      <p>I create clean, simple, and user-friendly mobile app and website designs. I focus on flat design, responsive layouts, wireframes, user flows, and modern UI screens using Figma.</p>
+
+      <div class="btn-group">
+        <a href="https://www.behance.net/gallery/248285297/Skill-Swap-Skill-Exchange-App-UIUX-Case-Study" target="_blank" class="btn">View Behance</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="profile-circle">D</div>
+      <h2>Dhanabalan S</h2>
+      <p>Figma • UI Design • UX Design</p>
+
+      <div class="contact-info">
+        <div class="info-item">
+          <strong>Email</strong>
+          <a href="mailto:dhanabalan601@gmail.com">dhanabalan601@gmail.com</a>
+        </div>
+
+        <div class="info-item">
+          <strong>Phone</strong>
+          <a href="tel:+917339668258">+91 7339668258</a>
+        </div>
+
+        <div class="info-item">
+          <strong>Behance</strong>
+          <a href="https://www.behance.net/gallery/248285297/Skill-Swap-Skill-Exchange-App-UIUX-Case-Study" target="_blank">Skill Swap Case Study</a>
+        </div>
+
+        <div class="info-item">
+  <strong>LinkedIn</strong>
+  <a href="https://www.linkedin.com/in/dhanabalan6/" target="_blank">linkedin.com/in/dhanabalan6</a>
+</div>
+
+<div class="info-item">
+  <strong>Resume</strong>
+  <a href="resume.pdf.pdf" target="_blank">
+    Download My Resume
+  </a>
+</div>
+
+</div>
+  </section>
+
+  <section class="section-box" id="about">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-subtitle">Beginner UI/UX designer interested in creating useful, simple, and visually clean digital products.</p>
+    <p class="about-text">I enjoy designing mobile apps, websites, landing pages, wireframes, user flows, and case studies. My goal is to become a professional UI/UX designer and work on real-world projects with strong design thinking and clean visual design.</p>
+  </section>
+
+  <section class="section-box" id="education">
+    <h2 class="section-title">Education & Course</h2>
+    <p class="section-subtitle">My academic background and UI/UX learning path.</p>
+
+    <div class="card-grid">
+      <div class="flat-card">
+        <div class="icon">🏫</div>
+        <h3>School</h3>
+        <p>Shanthi Nikethan Higher Secondary School, Kullampalayam.</p>
+      </div>
+
+      <div class="flat-card">
+        <div class="icon">🎓</div>
+        <h3>College</h3>
+        <p>BCA - RVS College of Arts and Science, Sulur.</p>
+      </div>
+
+      <div class="flat-card">
+        <div class="icon">💻</div>
+        <h3>UI/UX Course</h3>
+        <p>FITA Academy UI/UX Designer Masters Course.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-box" id="skills">
+    <h2 class="section-title">My Skills</h2>
+    <p class="section-subtitle">Design skills and tools I am learning and practicing.</p>
+
+    <div class="card-grid">
+      <div class="flat-card">
+        <div class="icon">🎨</div>
+        <h3>UI Design</h3>
+        <p>Mobile app screens, website layout, color selection, typography, spacing, and flat visual design.</p>
+      </div>
+
+      <div class="flat-card">
+        <div class="icon">🧭</div>
+        <h3>UX Design</h3>
+        <p>User flow, wireframes, information architecture, user research, and case study presentation.</p>
+      </div>
+
+      <div class="flat-card">
+        <div class="icon">🛠️</div>
+        <h3>Tools</h3>
+        <p>Figma, Canva, Adobe Photoshop, Adobe Illustrator, and responsive design practice.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-box" id="projects">
+    <h2 class="section-title">Projects</h2>
+    <p class="section-subtitle">Selected UI/UX and web design practice projects.</p>
+
+    <div class="card-grid">
+      <div class="flat-card">
+        <div class="icon">🤝</div>
+        <h3>Skill Swap App</h3>
+        <p>A skill exchange mobile app where users can learn and teach skills through session requests, profiles, and communication.</p>
+        <a 
+href="https://www.behance.net/gallery/248285297/Skill-Swap-Skill-Exchange-App-UIUX-Case-Study"
+target="_blank"
+class="project-link"
+style="position:relative;z-index:999;pointer-events:auto;"
+>
+View Case Study →
+</a>
+      </div>
+
+      <div class="flat-card">
+        <div class="icon">🛒</div>
+        <h3>E-commerce App</h3>
+        <p>A clean shopping app design with product cards, category browsing, offer sections, and checkout flow.</p>
+      </div>
+
+      <div class="flat-card">
+        <div class="icon">🌐</div>
+        <h3>Portfolio Website</h3>
+        <p>A responsive portfolio website created using HTML, CSS, and JavaScript to showcase profile and projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-box" id="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <p class="section-subtitle">You can contact me through email, phone, LinkedIn, or Behance.</p>
+
+    <div class="contact-box">
+      <form onsubmit="sendMessage(event)">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Dhanabalan S. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const navbar = document.getElementById('navbar');
+      navbar.classList.toggle('active');
+    }
+
+    function sendMessage(event) {
+      event.preventDefault();
+      alert('Thank you! Your message has been submitted.');
+    }
+  </script>
+</body>
+</html>
